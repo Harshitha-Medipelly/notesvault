@@ -258,3 +258,88 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
+// === Dynamic Collapsible Notes Section ===
+const notesData = [
+  {
+    title: "Mathematics I",
+    branch: "CSE",
+    semester: "1",
+    subject: "Maths",
+    link: "https://example.com/notes/maths1.pdf"
+  },
+  {
+    title: "Operating System Notes",
+    branch: "CSE",
+    semester: "2",
+    subject: "OS",
+    link: "https://example.com/notes/os.pdf"
+  },
+  {
+    title: "DBMS Concepts",
+    branch: "CSE",
+    semester: "2",
+    subject: "DBMS",
+    link: "https://example.com/notes/dbms.pdf"
+  },
+  {
+    title: "Intro to AI",
+    branch: "CSE AIML",
+    semester: "1",
+    subject: "AI",
+    link: "https://example.com/notes/ai.pdf"
+  },
+  {
+    title: "Machine Learning Basics",
+    branch: "CSE AIML",
+    semester: "2",
+    subject: "ML",
+    link: "https://example.com/notes/ml.pdf"
+  },
+  {
+    title: "Python for AIML",
+    branch: "CSE AIML",
+    semester: "2",
+    subject: "Python",
+    link: "https://example.com/notes/python_aiml.pdf"
+  }
+];
+
+// Group by Branch → Semester
+const groupedNotes = {};
+notesData.forEach(note => {
+  if (!groupedNotes[note.branch]) groupedNotes[note.branch] = {};
+  if (!groupedNotes[note.branch][note.semester]) groupedNotes[note.branch][note.semester] = [];
+  groupedNotes[note.branch][note.semester].push(note);
+});
+
+// Render Collapsible UI
+const container = document.getElementById("notesContainer");
+for (let branch in groupedNotes) {
+  const branchDiv = document.createElement("div");
+  branchDiv.classList.add("branch-block");
+  branchDiv.innerHTML = `<h3 class="branch-title">${branch}</h3>`;
+  
+  for (let sem in groupedNotes[branch]) {
+    const semDiv = document.createElement("div");
+    semDiv.classList.add("semester-block");
+    semDiv.innerHTML = `<button class="collapsible">Semester ${sem}</button><div class="content"></div>`;
+    
+    const contentDiv = semDiv.querySelector(".content");
+    groupedNotes[branch][sem].forEach(note => {
+      contentDiv.innerHTML += `<p><a href="${note.link}" target="_blank">${note.title} - ${note.subject}</a></p>`;
+    });
+    
+    branchDiv.appendChild(semDiv);
+  }
+  container.appendChild(branchDiv);
+}
+
+// Collapsible toggle
+document.querySelectorAll(".collapsible").forEach(btn => {
+  btn.addEventListener("click", () => {
+    btn.classList.toggle("active");
+    const content = btn.nextElementSibling;
+    content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
+  });
+});
