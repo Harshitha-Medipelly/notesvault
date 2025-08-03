@@ -306,3 +306,56 @@ body {
         font-size: $header-navigation-signup-fontsize;
     }
 }
+
+#notesContainer {
+  max-width: 800px;
+  margin: auto;
+  padding: 10px;
+}
+
+.branch-block {
+  background: #fff;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.semester-block {
+  margin: 10px 0;
+}
+
+.sem-btn {
+  width: 100%;
+  background: #222;
+  color: #fff;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 5px;
+}
+
+.notes-list {
+  display: none;
+  flex-direction: column;
+  margin: 10px 0 0 10px;
+}
+
+.notes-list.open {
+  display: flex;
+}
+
+.note-link {
+  padding: 6px 10px;
+  margin: 3px 0;
+  background: #f5f5f5;
+  border-radius: 4px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.note-link:hover {
+  background: #e0e0e0;
+}
