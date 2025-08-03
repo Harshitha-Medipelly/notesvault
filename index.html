@@ -126,8 +126,31 @@
 
     <section id="notes-section" style="padding:40px 20px;background:#fafafa">
   <h2 style="text-align:center;margin-bottom:20px;">📚 Browse Notes by Branch & Semester</h2>
-  <div id="notesContainer"></div>
+  <div id="notesContainer" style="display:flex;flex-wrap:wrap;gap:20px;justify-content:center"></div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const branches = ["CSE", "ECE", "MECH", "CIVIL"];
+    const notesContainer = document.getElementById("notesContainer");
+
+    branches.forEach(branch => {
+      const card = document.createElement("div");
+      card.style.cssText =
+        "width:200px;padding:15px;border:1px solid #ccc;border-radius:10px;background:#fff;box-shadow:0 2px 5px rgba(0,0,0,0.1);text-align:center;cursor:pointer;transition:transform 0.3s";
+      card.innerHTML = `<h3>${branch}</h3><p>Click to view notes</p>`;
+      card.onmouseover = () => (card.style.transform = "scale(1.05)");
+      card.onmouseout = () => (card.style.transform = "scale(1)");
+
+      card.addEventListener("click", () => {
+        alert("You clicked " + branch);
+      });
+
+      notesContainer.appendChild(card);
+    });
+  });
+</script>
+
 
 
     <!-- Features Section -->
