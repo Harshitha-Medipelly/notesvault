@@ -1829,3 +1829,59 @@ main {
     padding: 10px 0;
   }
 }
+
+/* === Collapsible Notes Section === */
+.branch-block {
+  background: white;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.branch-title {
+  font-size: 20px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.collapsible {
+  background: #333;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 16px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  transition: background 0.3s;
+}
+
+.collapsible:hover {
+  background: #555;
+}
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: #f9f9f9;
+  padding: 0 10px;
+  border-left: 2px solid #f4a261;
+}
+
+.content p {
+  margin: 5px 0;
+}
+
+.content a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
